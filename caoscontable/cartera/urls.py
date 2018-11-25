@@ -1,10 +1,10 @@
 from django.urls import path
-
+from .views import CreditosViews, credito,abonar,listarcreditos
 from . import views
-
-app_name = 'cartera'
-
 urlpatterns = [
-    path('', views.index, name='index'), 
+    path('', views.credito, name='credito'),
+    path('credito/',CreditosViews.as_view(),name="creditos"), 
+    path('abono/', views.abonar, name='abono'),
+    path('listarcreditos/', views.listarcreditos, name="listarcreditos"),
     #path('login/', views.login(), name='login'),
 ]

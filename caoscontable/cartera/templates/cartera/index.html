@@ -2,11 +2,22 @@
 
 {% block tittle%}
 
-    <tittle> Opciones de cartera  </tittle>
+    <title> Opciones de cartera  </title>
 {% endblock %}
 
-
+{% load static %}
 
 {% block footer%}
     <h4>Pie de pagina de el index de la cartera</h4>
+{% endblock %}
+
+{% block content %}
+<body>
+      <div class="topnav" id="myTopnav">
+              <a href="{% url 'creditos' %}">creditos</a>
+              <a href="{% url 'abono' %}">abonos</a>
+              <a href="#">historial</a>
+              </a>
+
+      </body>
 {% endblock %}

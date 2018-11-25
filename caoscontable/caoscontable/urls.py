@@ -19,11 +19,10 @@ from . import views
 from django.contrib.auth import authenticate,login
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     #path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('inventario/', include('inventario.urls')),
     path('facturacion/', include('facturacion.urls')),
-    path('cartera/', include('cartera.urls')),
+    path('', include('cartera.urls')),
 ]

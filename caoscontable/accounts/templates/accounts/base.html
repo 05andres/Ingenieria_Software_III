@@ -10,9 +10,8 @@
       <body>
       
       <div class="topnav" id="myTopnav">
-        <a href="/" class="active">Home</a>
         <a href="/accounts/login">Login</a>
-        <a href="/cartera">Cartera</a>
+        <a href="{% url 'credito' %}">Cartera</a>
         <a href="/facturacion">Facturacion</a>
         <a href="/inventario">Inventario</a>
         <a href="/javascript:void(0);" class="icon" onclick="myFunction()">
@@ -23,18 +22,19 @@
     {% endblock %}
 
     {% block content%}
-
-      <h4> Este es el cuerpo de la pagina </h4>
+    
     {% endblock %}
 
     
 
-    {% block footer%}
-    <h4>Este es el pie de pagina de la base</h4>
-    {% endblock %}
+    
 
-    {%block  extrajs%}
+    {% block footer%}
+    {% endblock %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    {% block  extrajs %}
       {% endblock %}
+
 
 
   </body>

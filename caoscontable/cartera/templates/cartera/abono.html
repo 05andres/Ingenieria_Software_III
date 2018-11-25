@@ -1,0 +1,24 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+<div class="topnav" id="myTopnav">
+              <a href="{% url 'creditos' %}">Creditos</a>
+              <a href="{% url 'abono' %}">abonos</a>
+              <a href="#">historial</a>
+              </a>
+      </div>
+</head>
+
+<body>
+    <form method="post" id="formdata">{% csrf_token %}
+       <label for="nombre">identificacion del usuario: </label><input type="text"  name="nombre" id="nombre" required="required">
+       <input type="button" id="botonenviar" value="Enviar">
+    </form>
+</body>
+{% endblock %}
+
+{% block  extrajs %}
+<script src="{% static 'cartera/cartera.js' %}"></script>
+{% endblock %}
