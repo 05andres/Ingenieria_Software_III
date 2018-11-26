@@ -31,14 +31,18 @@ $(document).ready(function() {
                     } else {
                         var html;
                         $.each(json, function(index, element) {
-                            //you can also use a templating engine like Underscore.js (the one I use), Mustache.js, Handlebars.js  http://garann.github.io/template-chooser/
-                            html = '<div id=abonar <li><strong>' + element.fields.indentificacion + '</strong> - <em> ' + element.fields.valor + '</em> - <span> ' + element.fields.Tiempo_credito + '</span></li>';
-                            html += 'Valor abonar: <input class=valor data-id="' + element.pk + '" data-cel="' + element.fields.indentificacion + '" data-valor="' + element.fields.valor + '" type="number" name="fname"  required="required"><br></br>';
-                            html += '<button>agregar abono</button>';
-                            html += '</div>'
-                            console.log(element.pk);
+                            if (element.fields.valor > 0) {
+                                //you can also use a templating engine like Underscore.js (the one I use), Mustache.js, Handlebars.js  http://garann.github.io/template-chooser/
+                                html = '<div id=abonar <li><strong>' + element.fields.indentificacion + '</strong> - <em> ' + element.fields.valor + '</em> - <span> ' + element.fields.Tiempo_credito + '</span></li>';
+                                html += 'Valor abonar: <input class=valor data-id="' + element.pk + '" data-cel="' + element.fields.indentificacion + '" data-valor="' + element.fields.valor + '" type="number" name="fname"  required="required"><br></br>';
+                                html += '<button>agregar abono</button>';
+                                html += '</div>'
+                                console.log(element.pk);
 
-                            $('body').append(html);
+                                $('body').append(html);
+                            } else {
+                                //pass
+                            }
                         });
                         $('body').on('click', '#abonar button', function(event) {
                             event.preventDefault();
@@ -48,6 +52,8 @@ $(document).ready(function() {
                             var valor_total = +$(this).closest('#abonar').find('.valor').data('valor');
                             if (precio == "") {
                                 alert('el campo esta vacio');
+                            } else if (precio > valor_total) {
+                                alert('ingrese un valor valido')
                             } else {
                                 $('input[type="number"]').val('');
                                 console.log(precio);
@@ -77,6 +83,7 @@ $(document).ready(function() {
                                     })
                                     .done(function(response) {
                                         alert(response.mensaje);
+                                        document.getElementById('abonar').innerHTML = '';
 
                                     });
 

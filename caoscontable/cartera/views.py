@@ -84,6 +84,9 @@ def abonosview(request):
         print(data)
         '''
     return JsonResponse(data,safe=False)
+
+def alertas(request):
+    pass
         
 
         
