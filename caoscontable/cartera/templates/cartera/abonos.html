@@ -1,0 +1,20 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+<div class="topnav" id="myTopnav">
+              <a href="{% url 'creditos' %}">Creditos</a>
+              <a href="{% url 'abono' %}">abonos</a>
+              <a href="#">historial</a>
+              </a>
+      </div>
+</head>
+
+<body>
+    <form method="post" id="formdata">{% csrf_token %}
+        {{ form.as_p }}
+       <input type="button" id="botonenviar" value="Enviar">
+    </form>
+</body>
+{% endblock %}

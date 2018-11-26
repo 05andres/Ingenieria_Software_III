@@ -45,9 +45,8 @@ class creditos(models.Model):
 class Abonos(models.Model):
     abono = models.ForeignKey(creditos,on_delete=models.CASCADE)
     cliente = models.ForeignKey(client,on_delete=models.CASCADE)
-    indentificacion=models.IntegerField(verbose_name="Identificacion del cliente",validators=[validatar_credito])
     valor_Abonar=models.IntegerField(verbose_name="Total a abonar")
-    total_pegar=models.IntegerField(null=True)
+    total_pegar=models.IntegerField()
     Fecha_abono = models.DateField(auto_now_add=True,verbose_name="Fecha de abono")
 
     class Meta:

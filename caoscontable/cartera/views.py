@@ -1,8 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404
 from .forms import creditosform
 from django import forms
-from .models import creditos,client
+from .models import creditos,client,Abonos
 from django.views.generic import View
 import time
 from datetime import datetime,timedelta
@@ -62,3 +62,31 @@ def listarcreditos(request):
         print (data)
         return JsonResponse(data,safe=False)
     return JsonResponse(data,safe=False)
+
+def abonosview(request):
+    data={}
+    if request.method == "POST":
+        valor = request.POST['precio']
+        iden = request.POST['id']
+        cedula =  request.POST['cedula']
+        valor_total = request.POST['valor_total']
+        valor_resta = int(valor_total)-int(valor)
+        identificacion = creditos.objects.get(id=iden)
+        cedulas = client.objects.get(identificacion=cedula)
+        print(valor,iden,cedula,valor_total,valor_resta)
+        abono = Abonos(abono=identificacion,cliente=cedulas,valor_Abonar=valor,total_pegar=valor_resta)
+        identificacion.valor=valor_resta
+        identificacion.save()
+        abono.save()
+        data['mensaje']="se realizo el abono satisfactoriamente"
+        '''
+        data= serialize('json',identificacion)
+        print(data)
+        '''
+    return JsonResponse(data,safe=False)
+        
+
+        
+
+
+
