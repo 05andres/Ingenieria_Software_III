@@ -3,7 +3,7 @@ $(document).ready(function() {
         var csrftoken = getCookie('csrftoken');
         if (validaForm()) {
             var identificacion = $("#nombre").val()
-            $('input[type="text"]').val('');
+            $('input[type="number"]').val('');
             console.log(identificacion)
             $.ajax({
                     type: "POST",
@@ -33,8 +33,8 @@ $(document).ready(function() {
                         $.each(json, function(index, element) {
                             if (element.fields.valor > 0) {
                                 //you can also use a templating engine like Underscore.js (the one I use), Mustache.js, Handlebars.js  http://garann.github.io/template-chooser/
-                                html = '<div id=abonar <li><strong>' + element.fields.indentificacion + '</strong> - <em> ' + element.fields.valor + '</em> - <span> ' + element.fields.Tiempo_credito + '</span></li>';
-                                html += 'Valor abonar: <input class=valor data-id="' + element.pk + '" data-cel="' + element.fields.indentificacion + '" data-valor="' + element.fields.valor + '" type="number" name="fname"  required="required"><br></br>';
+                                html = '<div id=abonar <li><strong>factura:</strong><strong>' + element.pk + '</strong> - <em><strong>cliente:</strong><strong>' + element.fields.indentificacion + '</strong> - <em><strong>valor restante:</strong> ' + element.fields.valor + '</em> - <span><strong>tiempo plazo de pago (dias):</strong> ' + element.fields.Tiempo_credito + '</span></li>';
+                                html += '-<em><strong>Valor abonar:</strong><strong> <input class=valor data-id="' + element.pk + '" data-cel="' + element.fields.indentificacion + '" data-valor="' + element.fields.valor + '" type="number" name="fname"  required="required"><br></br>';
                                 html += '<button>agregar abono</button>';
                                 html += '</div>'
                                 console.log(element.pk);

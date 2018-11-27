@@ -7,14 +7,14 @@
               <a href="{% url 'creditos' %}">Creditos</a>
               <a href="{% url 'abono' %}">abonos</a>
               <a href="{% url 'alertas' %}">Alertas</a>
-              <a href="#">historial</a>
+              <a href="{% url 'historial' %}">historial</a>
               </a>
       </div>
 </head>
 
 <body>
     <form method="post" id="formdata">{% csrf_token %}
-       <label for="nombre">identificacion del usuario: </label><input type="text"  name="nombre" id="nombre" required="required">
+       <label for="nombre">identificacion del usuario: </label><input type="number"  name="nombre" id="nombre" required="required">
        <input type="button" id="botonenviar" value="Enviar">
     </form>
 </body>

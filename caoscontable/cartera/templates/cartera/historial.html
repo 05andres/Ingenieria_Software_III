@@ -11,11 +11,14 @@
               </a>
       </div>
 </head>
-
 <body>
     <form method="post" id="formdata">{% csrf_token %}
-        {{ form.as_p }}
+       <label for="nombre">identificacion del usuario: </label><input type="number"  name="nombre" id="nombre" required="required">
        <input type="button" id="botonenviar" value="Enviar">
     </form>
 </body>
+{% endblock %}
+
+{% block  extrajs %}
+<script src="{% static 'cartera/historial.js' %}"></script>
 {% endblock %}
