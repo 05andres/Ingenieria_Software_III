@@ -1,0 +1,27 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+
+</head>
+
+<body>
+    <form method="post" id="formdata">{% csrf_token %}
+
+        <div class="col-sm-3">
+            <h2>Abonos</h2>
+       <label for="nombre">Identificación del usuario: </label>
+            <input type="text" class = "form-control" name="nombre" id="nombre" required="required">
+            <br>
+       <p><input type="submit" class="btn btn-primary btn-lg" value="Solicitar"></p>
+            <br>
+        </div>
+    </form>
+</body>
+{% endblock %}
+
+{% block  extrajs %}
+<script src="{% static 'cartera/cartera.js' %}"></script>
+{% endblock %}
+<br>

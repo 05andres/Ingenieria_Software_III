@@ -1,0 +1,30 @@
+{% extends 'accounts/base.html' %}
+
+{% block tittle%}
+
+    <tittle> Login  </tittle>
+{% endblock %}
+
+
+
+{% block content%}
+<!-- templates/registration/login.html -->
+<h2>Login</h2>
+<form method="post">
+  <div class="col-sm-3">
+      <h4>Usuario</h4>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Usuario">
+      </div>
+      <div class="col-sm-3">
+          <h4>Contraseña</h4>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <br>
+      <div class="col-sm-3">
+          <p><input type="submit" class="btn btn-primary btn-lg" value="Ingresar"></p>
+      </div>
+</form>
+
+{% endblock %}
+
+
