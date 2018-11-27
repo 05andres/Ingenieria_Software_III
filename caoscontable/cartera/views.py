@@ -85,8 +85,23 @@ def abonosview(request):
         '''
     return JsonResponse(data,safe=False)
 
+def lista_alertas(request):
+    print("hola")
+    date={}
+    if request.method == "GET":
+        fecha_alertas=creditos.objects.all()
+        data=serialize('json',fecha_alertas)
+        print("las fechas son :",data)
+    return JsonResponse(data,safe=False)
+
 def alertas(request):
-    pass
+    return render(request, 'cartera/alertas.html')
+
+
+    
+
+
+
         
 
         

@@ -13,9 +13,11 @@
 </head>
 
 <body>
-    <form method="post" id="formdata">{% csrf_token %}
-        {{ form.as_p }}
-       <input type="button" id="botonenviar" value="Enviar">
-    </form>
+    
 </body>
+{% endblock %}
+
+{% block  extrajs %}
+<script src="{% static 'cartera/alertas.js' %}"></script>
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
 {% endblock %}
