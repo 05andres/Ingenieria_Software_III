@@ -99,12 +99,13 @@ def lista_alertas(request):
 def alertas(request):
     return render(request, 'cartera/alertas.html')
 
-def bloqueo(request):
+def bloqueado(request):
     data={}
     if request.method == "POST":
         cedula =  request.POST['id']
-        bloqueo = bloqueo(identificacion=cedula)
-        bloqueo.save()
+        print(cedula)
+        bloqueos = bloqueo(identificacion=cedula)
+        bloqueos.save()
         data['mensaje']="el usario ha sido bloquedo"
     return JsonResponse(data,safe=False)
 

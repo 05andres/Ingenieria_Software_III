@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 def validate_even(value):
     try:
         cliente = client.objects.get(identificacion=value)
-        bloqueo = bloqueo.objects.filter(identificacion=value)
+        bloqueos = bloqueo.objects.filter(identificacion=value)
         bandera=True
     except client.DoesNotExist:
         bandera=False
@@ -14,7 +14,7 @@ def validate_even(value):
             _('%(value)s NO esta registrado'),
             params={'value': value},
         )
-    if bloqueo :
+    if bloqueos :
         raise ValidationError(
             _('%(value)s El usario se encuentra bloqueado'),
             params={'value': value},

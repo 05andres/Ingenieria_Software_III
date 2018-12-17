@@ -26,7 +26,7 @@ $(document).ready(function() {
                     $('body').append(html);
                 }
                 if (dias < 0) {
-                    html2 = '<div id=abonar2 <li><strong>factura:</strong><strong>' + element.pk + '</strong> - <em><strong>cliente:</strong> ' + element.fields.cliente + '</em> - <span><strong>valor restante:</strong> ' + element.fields.valor + '</span></li>';
+                    html2 = '<div id=abonar2 data-id="' + element.fields.cliente + '" <li><strong>factura:</strong><strong>' + element.pk + '</strong> - <em><strong>cliente:</strong> ' + element.fields.cliente + '</em> - <span><strong>valor restante:</strong> ' + element.fields.valor + '</span></li>';
                     html2 += '- <em><strong>estado roja</strong>'
                     html2 += '<button>Bloquear</button></div>';
                     $('body').append(html2);
@@ -38,9 +38,9 @@ $(document).ready(function() {
                 }
 
             });
-            $('body').on('click', '#abonar3 button', function(event) {
+            $('body').on('click', '#abonar2 button', function(event) {
                 event.preventDefault();
-                var indentificacion = +$(this).closest('#abonar3').data('id');
+                var indentificacion = +$(this).closest('#abonar2').data('id');
                 console.log(indentificacion);
                 var csrftoken = getCookie('csrftoken');
                 $.ajax({
